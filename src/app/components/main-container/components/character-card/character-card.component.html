@@ -1,16 +1,13 @@
-@let characterInfo = character();
+@let characterLocal = character(); @let characterInfoLocal = characterInfo();
 <div>
-  @if(characterInfo) {
+  @if(characterLocal) {
   <img
-    [ngSrc]="characterInfo.image"
-    [alt]="characterInfo.name"
+    [ngSrc]="characterLocal.image"
+    [alt]="characterLocal.name"
     width="200"
     height="200"
   />
-  <div class="character-info">
-    <h2>{{ characterInfo.name }}</h2>
-    <p>Species: {{ characterInfo.species }}</p>
-    <p>Status: {{ characterInfo.status }}</p>
-  </div>
+  <h2>Character: {{ characterLocal.name }}</h2>
+  <p>{{ characterInfoLocal?.species }}</p>
   }
 </div>

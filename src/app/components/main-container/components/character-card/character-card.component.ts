@@ -1,5 +1,11 @@
 import { NgOptimizedImage } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  OnInit,
+  output,
+} from '@angular/core';
 import { Character } from '../../../../models/character.model';
 
 @Component({
@@ -10,6 +16,12 @@ import { Character } from '../../../../models/character.model';
   styleUrl: './character-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CharacterCardComponent {
+export class CharacterCardComponent implements OnInit {
   character = input.required<Character>();
+  characterInfo = input.required<Character>();
+  loaded = output<string>();
+
+  ngOnInit(): void {
+    this.loaded.emit(this.character().url);
+  }
 }
